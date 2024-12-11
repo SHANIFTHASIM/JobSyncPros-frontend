@@ -4,8 +4,9 @@ import React, { ChangeEvent, useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Image from 'next/image';
 import useSWR from 'swr';
-import { useToast } from "@/components/ui/use-toast"; 
+
 import { Toaster } from "@/components/ui/toaster";
+import { useToast } from '@/hooks/use-toast';
 
 interface Profile {
   uuid: string;

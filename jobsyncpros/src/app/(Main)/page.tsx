@@ -1,60 +1,48 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import { FaHeart, FaRegComment, FaBookmark } from 'react-icons/fa';
+import useSWR from 'swr';
+import parse from 'html-react-parser';
+
+
+type Post = {
+  id: number;
+  title: string;
+  content: string;
+  image: string;
+  author: string;
+};
+
+// const fetcher=(url: string)=>fetch(url).then((res)=>res.json());
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log("response data :", data);
+  return data?.data || [];// Ensure data is an array
+};
+
 
 export default function HomeFeed() {
-  // Hardcoded posts data
-  const posts = [
-    {
-      id: 1,
-      title: 'Post 1',
-      content: 'This is the content for Post 1.',
-      image: '/jsplogo.jpg', // Assume you have images in the public/images folder
-      author: 'John Doe',
-    },
-    {
-      id: 2,
-      title: 'Post 2',
-      content: 'This is the content for Post 2.',
-      image: '/slack.png',
-      author: 'Jane Smith',
-    },
-    {
-      id: 3,
-      title: 'Post 3',
-      content: 'This is the content for Post 3.',
-      image: '/discord.png',
-      author: 'Alice Johnson',
-    },
-    {
-      id: 4,
-      title: 'Post 4',
-      content: 'This is the content for Post 4.',
-      image: '/jsplogo.jpg',
-      author: 'Alice Johnson',
-    },
-    {
-      id: 5,
-      title: 'Post 5',
-      content: 'This is the content for Post 5.',
-      image: '/slack.png',
-      author: 'Alice Johnson',
-    },
-    {
-      id: 6,
-      title: 'Post 6',
-      content: 'This is the content for Post 6.',
-      image: '/discord.png',
-      author: 'Alice Johnson',
-    },
-    {
-      id: 7,
-      title: 'Post 7',
-      content: 'This is the content for Post 7.',
-      image: '/jsplogo.jpg',
-      author: 'Alice Johnson',
-    },
-  ];
+  const { data: rawPosts, error } = useSWR<Post[]>('/api/posts', fetcher);
+
+  if (error) {
+    return <div>Error loading posts.</div>;
+  }
+
+  if (!rawPosts) {
+    return <div>Loading posts...</div>;
+  }
+
+
+  const posts: Post[] = rawPosts.map((post: any) => ({
+    id: post.id,
+    title: post.title,
+    content: post.content,
+    image: post.image,
+    author: post.user.username, // Extracting username from the user object
+  }));
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -64,9 +52,9 @@ export default function HomeFeed() {
         </h1>
       </header>
 
-      <main className="container mx-auto px-6 md:px-16 max-w-screen-md">
+      <main className="container mt-3 mx-auto px-6 md:px-16 max-w-screen-md">
         <div className="space-y-6">
-          {posts.map((post) => (
+          {posts?.map((post: Post) => (
             <div
               key={post.id}
               className="bg-white rounded-lg shadow-md overflow-hidden"
@@ -82,7 +70,7 @@ export default function HomeFeed() {
                 <h2 className="text-lg font-semibold text-gray-800">
                   {post.title}
                 </h2>
-                <p className="text-sm text-gray-600 mt-2">{post.content}</p>
+                <div className="text-sm text-gray-600 mt-2">{parse (post.content) }</div>
                 <span className="text-sm text-gray-500 block mt-2">
                   By {post.author}
                 </span>
