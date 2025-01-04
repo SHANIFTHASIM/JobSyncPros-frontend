@@ -31,11 +31,7 @@ const menuItems = [
         path: "/search",
         icon: <MdSupervisedUserCircle />,
       },
-      {
-        title: "Resume",
-        path: "/Resume",
-        icon: <MdSupervisedUserCircle />,
-      },
+
       {
         title: "Entreprenaur",
         path: "/entreprenaur",
@@ -44,6 +40,11 @@ const menuItems = [
       {
         title: "Courses",
         path: "/courses",
+        icon: <MdAnalytics />,
+      },
+      {
+        title: "Practice",
+        path: "/courses/practice",
         icon: <MdAnalytics />,
       },
     ],
@@ -71,12 +72,18 @@ const menuItems = [
         path: "/AIAgents",
         icon: <MdOutlineSettings />,
       },
-
       {
-        title: "Practice",
-        path: "/courses/practice",
-        icon: <MdAnalytics />,
+        title: "Resume",
+        path: "/Resume",
+        icon: <MdSupervisedUserCircle />,
       },
+      {
+        title: "PortfolioBuilder",
+        path: "/AIAgents/PortfolioBuilder",
+        icon: <MdOutlineSettings />,
+      },
+
+
       {
         title: "Settings",
         path: "/dashboard/settings",

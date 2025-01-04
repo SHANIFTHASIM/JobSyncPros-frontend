@@ -107,10 +107,10 @@ const Listings: React.FC<ListingsProps> = ({ filters, searchTerm, location }) =>
                       {job.category ? getCategoryIcon(job.category.name) : getCategoryIcon('')}
                       {job.title}
                     </h4>
-                    <p className="text-gray-700">{job.company}</p>
+                    <h4 className="text-gray-700">{job.company}</h4>
                     
-                    <p className="text-gray-500">{job.location}</p> {/* Location added */}
-                    <p className="text-gray-500">{job.url}</p> {/* Location added */}
+                    <h4 className="text-gray-500">{job.location}</h4> {/* Location added */}
+                    <h4 className="text-gray-500">{job.url}</h4> {/* Location added */}
                   </div>
                 </div>
               </li>

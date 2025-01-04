@@ -11,7 +11,7 @@ const DJANGO_PROFILE_UPDATE_API = 'http://127.0.0.1:8000/Authuser/profile/detail
 
 // Handle GET, POST, PUT requests
 export async function GET(request: Request) {
-    const authToken = getToken();
+    const authToken = await getToken();
     if (!authToken) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

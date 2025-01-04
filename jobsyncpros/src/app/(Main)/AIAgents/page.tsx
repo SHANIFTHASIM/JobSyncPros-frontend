@@ -18,6 +18,7 @@ export default function Home() {
   const [commandStatus, setCommandStatus] = useState<CommandStatus | null>(null);
   const [taskResults, setTaskResults] = useState<TaskResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Handle command submission
   const handleSubmit = async () => {
@@ -64,6 +65,14 @@ export default function Home() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Content Scraper and Summarizer</h1>
+        <h1 className="text-4xl font-extrabold text-gray-800 mb-8">AI Agents</h1>
+      <input
+        type="text"
+        placeholder="Search agents..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="mb-8 p-3 w-full max-w-lg border border-gray-300 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
 
         {/* Command Input */}
         <div className="mb-4">
