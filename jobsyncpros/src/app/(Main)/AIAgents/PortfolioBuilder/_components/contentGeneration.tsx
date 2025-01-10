@@ -1,9 +1,14 @@
 import React from 'react'
+import InputForm from './input'
 
-function contentGeneration() {
+function ContentGeneration() {
   return (
-    <div>contentGeneration</div>
+    <div>contentGeneration
+
+      <InputForm/>
+      
+    </div>
   )
 }
 
-export default contentGeneration
+export default ContentGeneration

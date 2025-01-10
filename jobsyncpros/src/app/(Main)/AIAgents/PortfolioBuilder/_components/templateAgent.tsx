@@ -1,9 +1,9 @@
 import React from 'react'
 
-const templateAgent = () => {
+const TemplateAgent = () => {
   return (
     <div>templateAgent</div>
   )
 }
 
-export default templateAgent
+export default TemplateAgent

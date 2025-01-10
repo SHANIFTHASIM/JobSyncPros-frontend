@@ -32,7 +32,7 @@ const PortfolioAgents = () => {
       preview: `
         <div style="padding: 10px; background-color: #f9fafb; border-radius: 8px;">
           <h3 style="color: #2563eb;">Media Processing Demo</h3>
-          <img src="https://via.placeholder.com/600x300" alt="Processed Image" style="border-radius: 8px; max-width: 100%;" />
+          <img src="https://via.placeholder.com/800x400" alt="Processed Image" style="border-radius: 8px; max-width: 100%;" />
           <p>Image has been optimized for better performance and integrated into the portfolio.</p>
         </div>
       `,
@@ -45,7 +45,7 @@ const PortfolioAgents = () => {
       preview: `
         <div style="padding: 10px; background-color: #f9fafb; border-radius: 8px;">
           <h3 style="color: #2563eb;">Recommended Layout</h3>
-          <p>Based on your input, we recommend using a modern layout with bold typography and large images for a stunning effect!</p>
+          <p>Based on your input, we recommend using a modern layout </p>
           <img src="https://via.placeholder.com/800x400" alt="Recommended Template" style="border-radius: 8px; max-width: 100%;" />
         </div>
       `,
@@ -84,13 +84,6 @@ const PortfolioAgents = () => {
     <div className="bg-gray-900 text-white min-h-screen p-6">
       <h1 className="text-4xl font-bold text-center mb-8 text-teal-400">AI Portfolio Agents</h1>
 
-      <input
-        type="text"
-        placeholder="Search agents..."
-        className="w-full p-3 mb-6 rounded-lg shadow-sm text-gray-900 border border-gray-300 focus:ring-2 focus:ring-teal-400"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredAgents.map((agent) => (

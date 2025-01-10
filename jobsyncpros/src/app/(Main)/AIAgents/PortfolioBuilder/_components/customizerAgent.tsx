@@ -1,9 +1,9 @@
 import React from 'react'
 
-const customizerAgent = () => {
+const CustomizerAgent = () => {
   return (
     <div>customizerAgent</div>
   )
 }
 
-export default customizerAgent
+export default CustomizerAgent
